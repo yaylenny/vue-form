@@ -1,8 +1,35 @@
-import { form, field, control, vertical, horizontal,
-  autocomplete, checkbox, file, input, radio, select, textarea } from "./components";
 
-const components={ form, field, control, vertical, horizontal,
-  autocomplete, checkbox, file, input, radio, select, textarea };
+import {
+  autocomplete,
+  checkbox,
+  control,
+  datepicker,
+  field,
+  file,
+  form,
+  horizontal,
+  input,
+  radio,
+  select,
+  textarea,
+  vertical
+} from "./components";
+
+const components={
+  autocomplete,
+  checkbox,
+  control,
+  datepicker,
+  field,
+  file,
+  form,
+  horizontal,
+  input,
+  radio,
+  select,
+  textarea,
+  vertical
+};
 
 function install( Vue, prefix="vue-" ){
   Object.keys( components ).forEach( prop=>Vue.component( `${prefix}${prop}`, components[ prop ] ));
@@ -10,32 +37,34 @@ function install( Vue, prefix="vue-" ){
 
 export default{
   install,
-  form,
-  field,
-  control,
-  vertical,
-  horizontal,
   autocomplete,
   checkbox,
+  control,
+  datepicker,
+  field,
   file,
+  form,
+  horizontal,
   input,
   radio,
   select,
-  textarea
+  textarea,
+  vertical
 };
 
 export {
   install,
-  form,
-  field,
-  control,
-  vertical,
-  horizontal,
   autocomplete,
   checkbox,
+  control,
+  datepicker,
+  field,
   file,
+  form,
+  horizontal,
   input,
   radio,
   select,
-  textarea
+  textarea,
+  vertical
 };

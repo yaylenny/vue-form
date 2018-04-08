@@ -1,12 +1,6 @@
 <script>
-  import item from "./item.vue";
+  import item from "Mixins/item.vue";
   import { checkbox, file, input, radio, select, textarea } from "./controls";
-  // import checkbox from "./controls/checkbox.vue";
-  // import file from "./controls/file.vue";
-  // import input from "./controls/input.vue";
-  // import radio from "./controls/radio.vue";
-  // import select from "./controls/select.vue";
-  // import textarea from "./controls/textarea.vue";
 
   const textInputTypes=[ 'text', 'number', 'date', 'password', 'email', 'tel'];
   const components={
@@ -18,13 +12,9 @@
     'control-textarea': textarea,
   };
 
-  console.log( 'compoent', components )
   export default{
     mixins:[ item ],
     props: {
-      addons: Array,
-      addonsCentered: Array,
-      addonsRight: Array,
       placeholder: String,
       isExpanded: Boolean,
       isLoading: Boolean,
@@ -36,9 +26,6 @@
     },
     components,
     computed:{
-      childControls(){// all controls that go inside this wrapper, ususally only one
-
-      },
       controlClass(){
         let ret=[ 'control' ];
         if( this.isExpanded ) ret.push('is-expanded');

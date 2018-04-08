@@ -34,7 +34,8 @@
 
   let getProps=modifers=>{
     return modifers.reduce(( o, prop )=>{
-      let props=Object.keys( propsToClass[ prop ]).reduce(( ret, key )=>Object.assign({}, ret, { [ key ]: Boolean }), {});
+      let props=Object.keys( propsToClass[ prop ])
+        .reduce(( ret, key )=>Object.assign({}, ret, {[ key ]: Boolean }), {});
       return Object.assign({}, o, ...props )
     }, {});
   }

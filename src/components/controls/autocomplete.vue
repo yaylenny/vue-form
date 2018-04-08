@@ -1,5 +1,5 @@
 <script>
-  import control from "../control.vue";
+  import control from "./control.vue";
   import input from "./input.vue";
   export default{
     props: {

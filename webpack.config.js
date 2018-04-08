@@ -14,6 +14,8 @@ module.exports={
   resolve:{
     alias:{
       Components: path.resolve( __dirname, 'src/components/'),
+      Controls: path.resolve( __dirname, 'src/components/controls/'),
+      Fields: path.resolve( __dirname, 'src/components/controls/'),
       Core: path.resolve( __dirname, 'src/core/'),
       Mixins: path.resolve( __dirname, 'src/mixins/')
     }
