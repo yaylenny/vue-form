@@ -39,6 +39,5 @@
     :type="type"
     :class="classList"
     :value="value"
-    :placeholder="placeholder"
-    @change="onInput( $event.target.value )" />
+    :placeholder="placeholder" />
 </template>

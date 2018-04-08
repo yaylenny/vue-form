@@ -7,7 +7,8 @@
       url: String,
       searchProps: Array, // properties on each object to search
       labelProp:{ type: String, default: 'label' }, // property to use for display
-
+      performLabel: Function,
+      performSearch: Function,
     },
     data(){
       return {

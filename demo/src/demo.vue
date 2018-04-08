@@ -56,39 +56,8 @@
             vue-field
               button.button.is-info( @click="") Submit
         .column.is-5.is-offset-1
-          h4.title.is-3 The Field component
+          h4.title.is-5 The Field component
           h5.subtitle VueForm.field
-          .box.is-small
-            .columns
-              .column.is-3
-                span.tag.is-primary.is-large Field
-              .column
-                .message.is-primary: .message-body.is-size-7
-                  ul
-                    li label
-                    li name
-                    li type
-                    li value
-                  hr.is-small
-                  ul
-                    li addons
-                    li addonsCentered
-                    li addonsRight: Array
-                    li iconsLeft: Array
-                    li iconsRight: Array
-                    li isGrouped: Boolean
-                    li isGroupedCentered: Boolean
-                    li isGroupedRight: Boolean
-                    li isGroupedMultiline: Boolean
-            .box
-              .columns
-                .column.is-5
-                  span.tag.is-info.is-large Control
-                .column
-                  .message.is-info: .message-body.is-size-7
-
-              .box
-                h4.subtitle.is-6 Element
     section.section: .container
       .columns
         .column.is-one-quarter: .box
