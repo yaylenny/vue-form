@@ -15,8 +15,10 @@
   }
 </script>
 <template>
-  <label class="checkbox">
-    <input type="checkbox" :checked="value" @change="onInput( $event.target.checked )" />
-    {{label}}
-  </label>
+  <div class="control">
+    <label class="checkbox">
+      <input type="checkbox" :checked="value" @change="onInput( $event.target.checked )" />
+      {{label}}
+    </label>
+  </div>
 </template>

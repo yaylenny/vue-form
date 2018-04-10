@@ -1,5 +1,6 @@
 <script>
   import SuperForm from "./components/SuperForm.vue";
+  import MockAutoComplete from "./components/MockAutoComplete.vue";
   import moment from "moment";
   export default{
     data(){
@@ -14,12 +15,15 @@
           age: 25,
           smokes: false,
           state:'',
+          city: '',
+          movie: 60,
           birthday: moment()
         }
       };
     },
     components:{
-      SuperForm
+      SuperForm,
+      MockAutoComplete
     },
     computed:{},
     methods:{},
@@ -45,14 +49,20 @@
           h3.subtitle A better description here
           hr
           vue-form
-            vue-field( v-model="person.name"
-              placeholder="Name"
-              label="Name"
-              message="Enter a name here")
-            vue-field( v-model="person.address" placeholder="Address" label="Address", type="textarea")
-            vue-field( v-model="person.smokes" label="Smoker" type="checkbox")
-            vue-field( v-model="person.birthday" label="Birthday" type="datepicker")
+            vue-field( label="Name" message="Enter a name here")
+              vue-input( v-model="person.name" placeholder="Name" iconsLeft="user")
 
+            vue-field( label="Address" )
+              vue-input( v-model="person.address" placeholder="Address" type="textarea" )
+            vue-field
+              vue-checkbox( label="Smoker" v-model="person.smokes" )
+            .columns
+              .column
+                vue-field( label="Datepicker")
+                  vue-datepicker( v-model="person.birthday" icon="calendar" is-info)
+              .column
+                vue-field( label="Autocomplete")
+                  mock-auto-complete( v-model="person.city" is-danger )
             vue-field
               button.button.is-info( @click="") Submit
         .column.is-5.is-offset-1
@@ -71,19 +81,26 @@
               button.button.is-success( @click="") Login
 
     section.section: .container
+      h1.title Autocomplete
+      h2.subtitle with easy to use hooks
+      hr
       .columns
-        .column.is-half
-          h2.title Addons & Grouping
-          h3.subtitle Right on the field component
-          hr
+        .column.is-6
+          h5.title.is-6 Movie titles
           vue-form
-            vue-field( v-model="login.username"
-              placeholder="Username"
-              :icons-left="['user']"
-              :addons-right="[]")
-              .control( slot="right" )
-                button.button.is-success( @click="" ) Add user
+            vue-autocomplete( v-model="person.movie"
+              placeholder="Movie title"
+              getter="movies"
+              labelProp="title"
+              searchProps="title"
+              valueProp="id"
+              icon="film")
 
+              template( slot="item" slot-scope="item" )
+                .subtitle {{item.label}}
+                .content
+                  p
+                    | {{item.result.release}}
     section.section: .container
       h2.title Super Form
       h3.subtitle Using the vue-form component

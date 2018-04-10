@@ -1,8 +1,22 @@
+import bulma from "./bulma.vue";
 import item from "./item.vue";
+import { colors, styles, states, sizes, input } from "./bulma/index.js";
 
 export{
-  item
+  bulma,
+  colors,
+  input,
+  item,
+  sizes,
+  states,
+  styles
 };
 export default{
-  item
+  bulma,
+  colors,
+  input,
+  item,
+  sizes,
+  states,
+  styles
 }

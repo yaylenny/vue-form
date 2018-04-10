@@ -1,12 +1,12 @@
 <script>
   import field from "./fields/field.vue";
-  import control from "./controls/control.vue";
   import { isPlainObject } from "lodash";
 
   let mods=[];
   export default{
     Fields:{}, // subclasses use this as a singleton to build forms
     props: {
+      Fields: Object,
       instance: {},
       data: Object,
       action: String,
@@ -23,8 +23,7 @@
       };
     },
     components:{
-      'form-field': field,
-      'field-control': control
+      'form-field': field
     },
     computed:{
       isValid(){
@@ -35,13 +34,14 @@
       buildFormField( name, opt ){
         opt=isPlainObject( opt ) ? opt : { type: opt };
         return Object.assign({
-          required: false
+          required: false,
+          widget: 'auto'
         }, opt, {
           name
         });
       },
       buildFormFields(){
-        let { Fields }=this.$options;
+        let Fields=Object.assign({}, this.$options.Fields || {}, this.Fields || {});
         if( Fields ){
           let { fields }=Fields;
           if( fields && Array.isArray( fields )){
@@ -70,6 +70,9 @@
     <slot name="pre"></slot>
     <slot>
       <form-field v-for="field in form.fields" :key="field.id">
+        <component
+          :is="field.widget">
+        </component>
       </form-field>
       <form-field>
         <button class="button" @click="submit">Submit</button>

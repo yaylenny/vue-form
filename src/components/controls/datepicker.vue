@@ -1,17 +1,23 @@
 <script>
   import moment from "moment";
-  import FieldControl from "./control.vue";
   import TextInput from "./input.vue";
-  import { item } from "Mixins";
+  import { bulma, colors, styles, states, sizes } from "Mixins";
   import { range } from "lodash";
 
   export default{
-    modifers:[ 'sizes', 'colors', 'states', 'styles' ],
+    name: 'vueDatepicker',
+    mixins:[ bulma, colors, styles, states, sizes ],
+    // modifiers:['colors','sizes','states','styles' ],
     baseClass: 'datepicker',
-    mixins:[ item ],
     props: {
       format:{ type: String, default: 'MMMM DD, YYYY'},
-      placeholder: String
+      placeholder: String,
+      name: String,
+      icon: String,
+      iconsLeft: [ String, Array ],
+      iconsRight: [ String, Array ],
+      // isPrimary: Boolean,
+      value:{}
     },
     data(){
 
@@ -31,7 +37,6 @@
       };
     },
     components:{
-      FieldControl,
       TextInput
     },
     computed:{
@@ -156,17 +161,35 @@
   }
 </script>
 <template>
-  <div class="control datepicker">
+  <div class="datepicker-control">
     <text-input
       :value="textInputValue"
       @focus="inputFocus"
-      @keyup.esc="datepickerVisible=false"
+      @keyup.native.esc="datepickerVisible=false"
+      :icon="icon"
+      :icons-left="iconsLeft"
+      :icons-right="iconsRight"
+      :is-primary="isPrimary"
+      :is-info="isInfo"
+      :is-danger="isDanger"
+      :is-warning="isPrimary"
+      :is-success="isInfo"
+      :is-small="isSmall"
+      :is-normal="isNormal"
+      :is-medium="isMedium"
+      :is-large="isLarge"
+      :is-hovered="isHovered"
+      :is-focused="isFocused"
+      :is-loading="isLoading"
+      :is-rounded="isRounded"
       :placeholder="placeholder">
     </text-input>
     <div class="dp-popup" v-show="datepickerVisible" @mouseup.stop="">
       <div class="dp-calendar">
         <div class="dp-nav">
-          <a class="button is-text" href="#" @click.prevent="jumpMonth( active.month - 1 )">&lt;</a>
+          <a class="button is-text" href="#" @click.prevent="jumpMonth( active.month - 1 )">
+
+          </a>
           <span class="title is-5">{{activeMonthName}} {{active.year}}</span>
           <a class="button is-text" href="#" @click.prevent="jumpMonth( active.month + 1 )">&gt;</a>
         </div>
@@ -182,7 +205,7 @@
               v-if="obj"
               :class="{ 'current': obj.current, 'today': isToday( obj.m ), active: isActive( obj.m ) }"
               @click="selectMoment( obj.m )">
-              <span>{{obj.date}}</span>
+              <div class="dp-date">{{obj.date}}</div>
             </div>
           </div>
         </div>
@@ -192,7 +215,7 @@
 </template>
 
 <style lang="scss">
-  .datepicker{
+  .datepicker-control{
     position: relative;
     font-size: 12px;
     .dp-popup{
@@ -225,7 +248,7 @@
       }
       .dp-row{
         &, .dp-day, .dp-dayname{
-          flex: 1;
+          width: 3rem;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -235,7 +258,18 @@
         }
         .dp-day{
           // border-top: 1px solid #aaa;
-          padding: .25em;
+          height: 3rem;
+          .dp-date{
+            padding: .25em;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            &:hover{
+              background: #eee;
+            }
+          }
           &:not(:last-child){
             // border-right: 1px solid #aaa;
           }

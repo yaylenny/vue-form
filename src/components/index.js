@@ -8,7 +8,6 @@ import {
   autocomplete,
   button,
   checkbox,
-  control,
   datepicker,
   file,
   input,
@@ -24,7 +23,6 @@ import {
 export{
   autocomplete,
   checkbox,
-  control,
   datepicker,
   field,
   file,

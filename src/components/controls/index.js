@@ -1,4 +1,3 @@
-import control from "./control.vue";
 import checkbox from "./checkbox.vue";
 import file from "./file.vue";
 import button from "./button.vue";
@@ -13,7 +12,6 @@ export{
   autocomplete,
   button,
   checkbox,
-  control,
   datepicker,
   file,
   input,
